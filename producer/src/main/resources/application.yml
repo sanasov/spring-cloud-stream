@@ -2,8 +2,8 @@ spring:
   cloud:
     stream:
       bindings:
-        legalbriefs:
-          destination: legalbriefsss
+        igreyBinding:
+          destination: igreyEx
   rabbitmq:
     host: 127.0.0.1
     port: 5672
