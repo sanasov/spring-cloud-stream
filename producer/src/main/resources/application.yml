@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: queue.pretty.log.messages
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+server:
+  port: 8088
+management:
+  health:
+    binders:
+       enabled: true
