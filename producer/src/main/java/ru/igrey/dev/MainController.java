@@ -17,8 +17,7 @@ public class MainController {
 
     @GetMapping("brief")
     public String publishMessage(@RequestParam("payload") String payload) {
-        System.out.println(payload);
-        processor.anotherOutput().send(MessageBuilder.withPayload(payload).build());
-        return "success " + payload;
+        processor.anOutput().send(MessageBuilder.withPayload(payload).build());
+        return "send success: " + payload;
     }
 }

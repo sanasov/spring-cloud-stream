@@ -2,7 +2,7 @@ spring:
   cloud:
     stream:
       bindings:
-        output:
+        input:
           destination: legalbriefs
   rabbitmq:
     host: 127.0.0.1
@@ -10,8 +10,8 @@ spring:
     username: guest
     password: guest
 server:
-  port: 8088
+  port: 0
 management:
   health:
     binders:
-       enabled: true
+      enabled: true
