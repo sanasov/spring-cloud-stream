@@ -2,8 +2,8 @@ spring:
   cloud:
     stream:
       bindings:
-        output:
-          destination: legalbriefs
+        legalbriefs:
+          destination: legalbriefsss
   rabbitmq:
     host: 127.0.0.1
     port: 5672

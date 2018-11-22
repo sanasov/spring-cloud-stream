@@ -11,7 +11,7 @@ public interface MyProcessor {
     @Input
     SubscribableChannel myInput();
 
-    @Output("myOutput")
+    @Output("legalbriefs")
     MessageChannel anOutput();
 
     @Output

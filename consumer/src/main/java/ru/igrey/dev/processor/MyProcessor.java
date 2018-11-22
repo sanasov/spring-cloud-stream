@@ -6,9 +6,9 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
 public interface MyProcessor {
-    String INPUT = "myInput";
+    String INPUT = "legalbriefsss";
 
-    @Input
+    @Input(INPUT)
     SubscribableChannel myInput();
 
     @Output("myOutput")
