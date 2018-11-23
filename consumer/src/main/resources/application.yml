@@ -4,6 +4,14 @@ spring:
       bindings:
         myBinding:
           destination: igreyEx
+          group: igreyGroup
+      rabbit:
+        bindings:
+          myBinding:
+            consumer:
+              auto-bind-dlq:  true
+              republish-to-dlq: true
+              bindingRoutingKey: red
   rabbitmq:
     host: 127.0.0.1
     port: 5672

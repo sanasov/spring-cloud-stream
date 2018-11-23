@@ -17,8 +17,13 @@ public class MainController {
     MyProcessor processor;
 
     @GetMapping("brief")
-    public String publishMessage(@RequestParam("payload") String payload) {
-        processor.anOutput().send(MessageBuilder.withPayload(new LogMessage(payload)).build());
-        return "send success: " + payload;
+    public String publishMessage(@RequestParam("key") String key, @RequestParam("payload") String payload) {
+        processor.anOutput().send(
+                MessageBuilder
+                        .withPayload(new LogMessage(payload))
+                        .setHeader("type", key)
+                        .build()
+        );
+        return "send success to queue by key: " + key + " message:" + payload;
     }
 }

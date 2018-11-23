@@ -5,10 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.support.MessageBuilder;
 import ru.igrey.dev.model.LogMessage;
 import ru.igrey.dev.processor.MyProcessor;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 @SpringBootApplication
@@ -21,13 +21,14 @@ public class ConsumerApplication {
     @Autowired
     private MyProcessor processor;
 
+    private static AtomicInteger count = new AtomicInteger(0);
+
     @StreamListener(target = MyProcessor.INPUT)
     public void logfast(LogMessage msg) {
+        if (count.incrementAndGet() <= 1) {
+            System.out.println("Error message. Try count:" + count.get());
+            throw new RuntimeException("Error message:" + msg);
+        }
         System.out.println(msg);
-    }
-
-    private static final <T> Message<T> message(T val) {
-        return MessageBuilder.withPayload(val)
-                .build();
     }
 }

@@ -2,8 +2,15 @@ spring:
   cloud:
     stream:
       bindings:
-        igreyBinding:
+        myBinding:
           destination: igreyEx
+#          producer:
+#            bindingRoutingKey: red
+      rabbit:
+        bindings:
+          myBinding:
+            producer:
+              routing-key-expression: headers.type
   rabbitmq:
     host: 127.0.0.1
     port: 5672
@@ -14,4 +21,4 @@ server:
 management:
   health:
     binders:
-       enabled: true
+      enabled: true

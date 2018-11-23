@@ -10,7 +10,7 @@ public interface MyProcessor {
     @Input
     SubscribableChannel myInput();
 
-    @Output("igreyBinding")
+    @Output("myBinding")
     MessageChannel anOutput();
 
     @Output
