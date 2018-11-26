@@ -1,23 +1,29 @@
 package ru.igrey.dev.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
-@XmlRootElement
 public class LogMessage implements Serializable {
 
     private static final long serialVersionUID = -5857383701708275796L;
 
-    @XmlElement
     private String message;
+    private Integer age;
 
     public LogMessage() {
 
     }
 
-    public LogMessage(String message) {
+    public LogMessage(String message, Integer age) {
         this.message = message;
+        this.age = age;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public String getMessage() {
@@ -30,7 +36,7 @@ public class LogMessage implements Serializable {
 
     @Override
     public String toString() {
-        return getClass().toString() + message;
+        return message + "\t" + age;
     }
 
 }

@@ -20,7 +20,7 @@ public class MainController {
     public String publishMessage(@RequestParam("key") String key, @RequestParam("payload") String payload) {
         processor.anOutput().send(
                 MessageBuilder
-                        .withPayload(new LogMessage(payload))
+                        .withPayload(new LogMessage(payload, payload.length()))
                         .setHeader("type", key)
                         .build()
         );

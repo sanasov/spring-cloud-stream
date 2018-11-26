@@ -43,7 +43,7 @@ public class LogMessage implements Serializable {
 
     @Override
     public String toString() {
-        return getClass().toString() + message;
+        return message + "\t" + age;
     }
 
 }

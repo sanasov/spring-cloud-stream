@@ -26,17 +26,26 @@ public class ConsumerApplication {
     }
 
     @Autowired
-    private MyProcessor processor;
+    private MyProcessor myProcessor;
 
     private static AtomicInteger count = new AtomicInteger(0);
 
-    @StreamListener(target = MyProcessor.INPUT)
-    public void logfast(LogMessage msg) {
+    @StreamListener(target = MyProcessor.XML_INPUT)
+    public void logXmlfast(LogMessage msg) {
         if (count.incrementAndGet() <= 1) {
             System.out.println("Error message. Try count:" + count.get());
             throw new RuntimeException("Error message:" + msg);
         }
-        System.out.println(msg);
+        System.out.println("XML LOG:" + msg);
+    }
+
+    @StreamListener(target = MyProcessor.JSON_INPUT)
+    public void logJsonFast(LogMessage msg) {
+        if (count.incrementAndGet() <= 1) {
+            System.out.println("Error message. Try count:" + count.get());
+            throw new RuntimeException("Error message:" + msg);
+        }
+        System.out.println("JSON LOG:" + msg);
     }
 
     @Bean

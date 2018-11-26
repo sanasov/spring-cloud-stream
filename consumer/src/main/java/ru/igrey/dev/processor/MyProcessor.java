@@ -6,10 +6,14 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
 public interface MyProcessor {
-    String INPUT = "myBinding";
+    String JSON_INPUT = "jsonBinding";
+    String XML_INPUT = "xmlBinding";
 
-    @Input(INPUT)
-    SubscribableChannel myInput();
+    @Input(JSON_INPUT)
+    SubscribableChannel jsonInput();
+
+    @Input(XML_INPUT)
+    SubscribableChannel xmlInput();
 
     @Output("myOutput")
     MessageChannel anOutput();

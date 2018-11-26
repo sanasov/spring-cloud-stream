@@ -2,17 +2,26 @@ spring:
   cloud:
     stream:
       bindings:
-        myBinding:
-          content-type: application/xml
+        xmlBinding:
+#          content-type: application/xml
           destination: igreyEx
-          group: igreyGroup
+          group: igreyGroup1
+        jsonBinding:
+#          content-type: application/json
+          destination: igreyEx
+          group: igreyGroup2
       rabbit:
         bindings:
-          myBinding:
+          xmlBinding:
             consumer:
               auto-bind-dlq:  true
               republish-to-dlq: true
               bindingRoutingKey: red
+          jsonBinding:
+            consumer:
+              auto-bind-dlq:  true
+              republish-to-dlq: true
+              bindingRoutingKey: blue
   rabbitmq:
     host: 127.0.0.1
     port: 5672
