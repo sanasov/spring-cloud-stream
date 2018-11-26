@@ -3,6 +3,7 @@ spring:
     stream:
       bindings:
         myBinding:
+          content-type: application/xml
           destination: igreyEx
           group: igreyGroup
       rabbit:
